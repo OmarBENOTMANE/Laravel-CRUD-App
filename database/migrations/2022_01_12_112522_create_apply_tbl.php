@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateApplyTbl extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        if(!Schema::hasTable('applies')){
+        Schema::create('applies', function (Blueprint $table) {
+            $table->id();
+             $table->string('opportunity');
+            $table->string('employee');
+            $table->date('created_at');
+              $table->rememberToken();
+            $table->timestamps();
+        });}
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('applies');
+    }
+}
